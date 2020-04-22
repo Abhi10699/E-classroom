@@ -1,9 +1,8 @@
-<!-- Controller -->
-<!-- Includes -->
-
-<?php require "../_includes/header.php" ?>
-<?php require "../_includes/body.php" ?>
-
+<?php 
+  require "./controllers/controller.signup.php";
+  require "../_includes/header.php";
+  require "../_includes/body.php";
+?>
 <div class="container mt-3">
   <form id="form-register">
 
