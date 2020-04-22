@@ -1,4 +1,4 @@
-<!-- Load includes -->
+<?php require("./controllers/controller.index.php")?>
 <?php require("../_includes/header.php")?>
 
 <link rel="stylesheet" href="style.css">
@@ -8,7 +8,6 @@
 
 <!-- Load controller -->
 
-<?php require("./controllers/controller.index.php")?>
 <div class="container">
   
 </div>
