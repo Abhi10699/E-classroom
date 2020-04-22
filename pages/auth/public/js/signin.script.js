@@ -12,13 +12,10 @@ async function login(){
    body:formData
  })
 
- const data = await res.text();
- const status = await data;
+ const data = await res.json();
 
- console.log(status);
-
- if(status == 1){
-   console.log("Success");
+ console.log(data);
+ if(data.authenticated){
    window.location="/pages/dashboard/";
  }
 
