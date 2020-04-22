@@ -1,6 +1,8 @@
-<!-- load includes -->
-<?php require "../_includes/header.php" ?>
-<?php require "../_includes/body.php" ?>
+<?php
+  require "./controllers/controller.signin.php";
+  require "../_includes/header.php";  
+  require "../_includes/body.php";
+?>
 
 <div class="container mt-3">
   <form method="POST" id="login-form">
