@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 // load User model
 require($_SERVER["DOCUMENT_ROOT"] . "/models/entities/User.php");
 
@@ -17,15 +16,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function authenticateUser(array $userData): void
 {
-  $user = User::ExistingUser($userData["email"],$userData["password"]);
+
+  $user = User::ExistingUser($userData["email"], $userData["password"]);
   $authenticated = $user->authenticate();
 
-  if($authenticated){
-    echo true;
+  $_SESSION["authenticated"] = $authenticated;
 
-  }
-  else{
-    echo false;
+  if ($authenticated["isUser"]) {
+    $jsonResponse = array(
+      "authenticated" => $authenticated
+    );
+
+    echo json_encode($jsonResponse);
+  } else {
+    $jsonResponse = array(
+      "authenticated" => $authenticated,
+      "error" => "User not found"
+    );
+
+    echo json_encode($jsonResponse);
   }
 }
 
@@ -37,7 +46,7 @@ function validate(): array
 
   $valid = false;
 
-  global $error_email, $error_password; 
+  global $error_email, $error_password;
   if (empty($email)) {
     $error_email = "Please enter email..";
   } else {
