@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // load User model
 require ($_SERVER["DOCUMENT_ROOT"] . "/models/entities/User.php");
 
@@ -33,12 +33,18 @@ function createUser(array $userData) : void{
 
   $user = User::NewUser($userData["username"],$userData["email"],$userData["password"]);
   $userAdded = $user->saveUser();
-  
+
+  $jsonResponse = null;
+
   if($userAdded){
-    echo true;
+    $_SESSION["authenticated"] = "1";
+    $jsonResponse = array("userCreated"=>true);
+    echo json_encode($jsonResponse);
   }
   else{
-    echo false;
+    $_SESSION["authenticated"] = "0";
+    $jsonResponse = array("userCreated"=>false);
+    echo json_encode($jsonResponse);
   }
 }
 
