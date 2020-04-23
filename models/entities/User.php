@@ -17,6 +17,8 @@ class User
     $this->dbcon = getDbConnection();
   }
 
+  // static functions that returns User object 
+
   public static function NewUser(string $username, string $email, string $password): User
   {
     $instance = new self();
@@ -44,79 +46,150 @@ class User
     return $instance;
   }
 
+  public static function FromId(int $id)
+  {
+    $instance = new self();
+    $instance->id = $id;
+
+    $newUser = $instance->findUserById();
+
+    if ($newUser["isUser"] == false) {
+      die("user does not exists");
+    }
+    return $newUser;
+  }
 
   // save user to database;
   public function saveUser(): bool
   {
 
-    $userExists = $this->findUser();
+    $userExists = $this->findUserByEmail();
+    var_dump($userExists);
     if ($userExists["isUser"]) {
 
       // cannot create user because user with that email already exists;
       return false;
     }
 
-    $statement = $this->dbcon->prepare("insert into Users (username,email,password) values(?,?,?);");
-    $statement->bind_param("sss", $this->username, $this->email, $this->password);
+    $statement = "insert into Users (username,email,password) values(?,?,?)";
+    $params = array(
+      "dTypes" => "sss",
+      "params" => array($this->username,$this->email,$this->password)
+    );
 
-    $err = $statement->execute();
+    $result = PrepareUpdateCall($this->dbcon,$statement,$params);
 
-    if ($err == false) {
-      return false;
-    } else {
-      return true;
-    }
+    return $result;
+
   }
 
+
+  // find user by id
+  public function findUserById()
+  {
+
+    $statement = "select * from Users where id = ?";
+    $params = array(
+      "dTypes" => "i",
+      "params" => array($this->id)
+    );
+
+    return PrepareFetchCall($this->dbcon,$statement, $params, function ($response) {
+
+      $returnResonse = null;
+
+      if ($response["error"] == true) {
+        $returnResonse = array("isUser" => false);
+  
+      } else {
+
+        // get the column
+        $userData = $response["data"]->fetch_assoc();
+        $returnResonse = array(
+          "isUser" => true,
+          "user" => User::FromRow($userData)
+        );
+      }
+
+      return $returnResonse;
+
+    });
+  }
 
   // check functions
 
-  public function findUser(): array
+  public function findUserByEmail(): array
   {
-    $statement = $this->dbcon->prepare("select id from Users where email = ?;");
-    $statement->bind_param("s", $this->email);
+    $statement = "select id from Users where email = ?;";
+    $params = array(
+      "dTypes"=>"s",
+      "params"=>array($this->email),
+    );
 
-    $result = $statement->execute();
+    return PrepareFetchCall($this->dbcon,$statement,$params,function($response){
+      
+      $returnResonse = null;
+      if($response["error"]){
+      
+        $returnResonse = array(
+          "isUser" => false
+        );
+      
+      }
 
-    $f = $statement->get_result();
-
-    if ($f->num_rows > 0) {
-      // user exists 
-      $row = $f->fetch_assoc();
-      $newUser = User::FromRow($row);
-
-      return array(
-        "isUser"=>true,
-        "user"=>$newUser
-      );
+      else{
+        $userData = $response["data"]->fetch_assoc();
+        $returnResonse = array(
+          "isUser" => true,
+          "user" => User::FromRow($userData)
+        );
+      }
 
 
-    } else {
-      // user doesnot exists
-      return array(
-        "isUser"=>false
-      );
-
-      return false;
-    }
+      return $returnResonse;
+    });
   }
 
-  public function authenticate(): bool
+
+  // simple authentication function
+
+  public function authenticate(): array
   {
-    $statement = $this->dbcon->prepare("select id,username,email from Users where email = ? and password = ?;");
-    $statement->bind_param("ss", $this->email, $this->password);
+    $statement = "select id from Users where email = ? and password = ?";
+    $params = array(
+      "dTypes"=>"ss",
+      "params"=>array($this->email,$this->password)
+    );
 
-    $result = $statement->execute();
+    return PrepareFetchCall($this->dbcon,$statement,$params,function($response){
+      
+      $returnResonse = null;
 
-    $data = $statement->get_result();
+      if($response["error"]){
 
-    if ($data->num_rows > 0) {
-      // user exists
-      $row = $data->fetch_assoc();
-      return true;
-    } else {
-      // user doesnot exists
-      return false;
-    }
+        $returnResonse = array(
+          "isUser"=>false
+        );
+      }
+      else{
+        $userData = $response["data"]->fetch_assoc();
+        $returnResonse = array(
+          "isUser"=>true,
+          "userId"=>$userData["id"]
+        );
+      }
+
+      return $returnResonse;
+    });
+  }
+
+  // getters
+
+  public function getConnection(){
+    return $this->dbcon;
+  }
+
+  public function getUserId(){
+    return $this->id;
   }
 }
