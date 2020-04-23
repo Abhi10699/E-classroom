@@ -78,5 +78,5 @@
 </div>
 
 <!-- Load Javascripts  -->
-<script src="./public/js/register.script.js"></script>
+<script src="./public/js/auth.register.js"></script>
 <?php require "../_includes/footer.php" ?>
