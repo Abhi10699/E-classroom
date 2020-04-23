@@ -12,12 +12,13 @@ create table Users(
 
 create table Classroom (
   classroom_name varchar(100),
+  description varchar(200),
   classroom_id int(10) primary key auto_increment,
   FK_admin_id int,
   foreign key (FK_admin_id) references Users(id)
 );
 
--- Participants table
+-- Participants (studnets) table
 
 create table Participants(
   FK_class_id int,
