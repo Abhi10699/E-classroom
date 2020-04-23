@@ -6,6 +6,7 @@ class Classroom{
   private $classroomId;
   private $adminId;
   private $classroom_name;
+  private $classroom_description;
   private $conn;
 
   function __construct()
@@ -14,11 +15,12 @@ class Classroom{
   }
   
   // static function to build new classroom
-  public static function NewClassroom(int $adminId,string $classroom_name){
+  public static function NewClassroom(int $adminId,string $classroom_name,string $classroom_description){
     $instacnce = new self();
     $instacnce->adminId = $adminId;
     $instacnce->classroom_name = $classroom_name;
-    
+    $instacnce->classroom_description = $classroom_description;
+
     return $instacnce;
   }
   
@@ -33,44 +35,38 @@ class Classroom{
   public function createClassroom() : bool{
     // create classroom query
 
-    $stmt = $this->conn->prepare("insert into Classroom (classroom_name,FK_admin_id ) values (?,?)");
-    $stmt->bind_param("si",$this->classroom_name,$this->adminId);
+    $statement = "insert into Classroom (classroom_name,description,FK_admin_id ) values (?,?,?)";
+    $params = array(
+      "dType" => "ssi",
+      "params" => array($this->classroom_name,$this->classroom_description,$this->adminId)
+    );
 
-    $err = $stmt->execute();
+    return PrepareUpdateCall($this->conn,$statement,$params);
 
-    if($err == false){
-      return false;
-    }
-    else{
-      return true;
-    }
   }
 
   
   // fetch classroom from database
   public function fetchClassroom(){
-    $stmt = $this->con->prepare("select * from Classroom where id = ?");
-    $stmt->bind_param("i",$this->classroomId);
 
-    $err = $stmt->execute();
+    $statement = "select * from Classroom where id = ?";
+    $params = array(
+      "dTypes" => "i",
+      "params" => array($this->classroomId)
+    );
 
-    // handle err
+    $result = PrepareFetchCall($this->conn,$statement,$params,function($response){
 
-    $result = $stmt->get_result();
+    });
 
-    if($result->num_rows > 0){
-      // send classrom 
-    }
-    else{
-      // classroom not found
-    }
+    return $result;
   }
 
   // add students in classroom
 
   public function addParticipant(User $_user){
     // find participant
-    $user = $_user->findUser();
+    $user = $_user->findUserById();
 
     if($user["isUser"] == false){
       die("cannot find user");
@@ -83,5 +79,4 @@ class Classroom{
     
     $stmt->bind_param("ii",$this->classroomId,$user["user"]->id);
   }
-
 }
