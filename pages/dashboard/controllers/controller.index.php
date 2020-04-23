@@ -1,7 +1,11 @@
 <?php
-session_start();
-  $_SESSION['test'] = 'test';
-  if($_SESSION["authenticated"] == "0"){
+  session_start();
+
+  // load user class
+  require($_SERVER["DOCUMENT_ROOT"] . "/models/entities/User.php");
+  require($_SERVER["DOCUMENT_ROOT"] . "/models/entities/Student.php");
+
+  if( !isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] == "0"){
     header("Location: /pages/auth/signin.php");  
   }
 
