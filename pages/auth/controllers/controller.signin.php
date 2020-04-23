@@ -20,17 +20,21 @@ function authenticateUser(array $userData): void
   $user = User::ExistingUser($userData["email"], $userData["password"]);
   $authenticated = $user->authenticate();
 
-  $_SESSION["authenticated"] = $authenticated;
+  $_SESSION["authenticated"] = $authenticated["isUser"];
 
-  if ($authenticated["isUser"]) {
+  if ($authenticated["isUser"] == true) {
     $jsonResponse = array(
       "authenticated" => $authenticated
     );
+    
+    // put user into session
+
+    $_SESSION["USER_ID"] = $authenticated["userId"];
 
     echo json_encode($jsonResponse);
   } else {
     $jsonResponse = array(
-      "authenticated" => $authenticated,
+      "authenticated" => $authenticated["isUser"],
       "error" => "User not found"
     );
 
