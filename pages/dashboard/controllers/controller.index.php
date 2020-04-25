@@ -2,8 +2,9 @@
   session_start();
 
   // load user class
-  require($_SERVER["DOCUMENT_ROOT"] . "/models/entities/User.php");
-  require($_SERVER["DOCUMENT_ROOT"] . "/models/entities/Student.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/models/entities/User.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/models/entities/Student.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/models/entities/Teacher.php");
 
   if( !isset($_SESSION["authenticated"]) || $_SESSION["authenticated"] == "0"){
     header("Location: /pages/auth/signin.php");  
@@ -13,8 +14,6 @@
 
   $myUser = User::FromId($_SESSION["USER_ID"])["user"];
 
-  // fetch classrooms as student
-  $s = Student::getAllClassrooms($myUser->getConnection(),$myUser->getUserId());  
-  
-  // fetch classrooms as a teacher
-?>
+
+  $MyClassrooms_student = Student::getAllClassrooms($myUser->getConnection(),$myUser->getUserId());
+  $MyClassrooms_teacher = Teacher::getClassroms($myUser->getConnection(),$myUser->getUserId());
