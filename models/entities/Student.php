@@ -12,9 +12,9 @@
         "params"=> array($userId)
       );
 
-      return PrepareFetchCall($conn,$statement,$params,function($response){
+      return Database::PrepareFetchCall($conn,$statement,$params,function($response){
         if($response["error"]){
-          echo "err";
+          return;
         }
         else{
           $classrooms = array();
