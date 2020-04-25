@@ -1,7 +1,7 @@
 <?php
 
 // load database class;
-require($_SERVER["DOCUMENT_ROOT"] . "/classes/database.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/classes/database.php");
 
 class User
 {
@@ -14,7 +14,7 @@ class User
 
   function __construct()
   {
-    $this->dbcon = getDbConnection();
+    $this->dbcon = Database::getDbConnection();
   }
 
   // static functions that returns User object 
@@ -77,7 +77,7 @@ class User
       "params" => array($this->username,$this->email,$this->password)
     );
 
-    $result = PrepareUpdateCall($this->dbcon,$statement,$params);
+    $result = Database::PrepareUpdateCall($this->dbcon,$statement,$params);
 
     return $result;
 
@@ -94,7 +94,7 @@ class User
       "params" => array($this->id)
     );
 
-    return PrepareFetchCall($this->dbcon,$statement, $params, function ($response) {
+    return Database::PrepareFetchCall($this->dbcon,$statement, $params, function ($response) {
 
       $returnResonse = null;
 
@@ -126,7 +126,7 @@ class User
       "params"=>array($this->email),
     );
 
-    return PrepareFetchCall($this->dbcon,$statement,$params,function($response){
+    return Database::PrepareFetchCall($this->dbcon,$statement,$params,function($response){
       
       $returnResonse = null;
       if($response["error"]){
@@ -161,7 +161,7 @@ class User
       "params"=>array($this->email,$this->password)
     );
 
-    return PrepareFetchCall($this->dbcon,$statement,$params,function($response){
+    return Database::PrepareFetchCall($this->dbcon,$statement,$params,function($response){
       
       $returnResonse = null;
 
