@@ -4,7 +4,7 @@ insert into Classroom (FK_admin_id,classroom_name,description) values(1,"Java fr
 
 -- Add participants with id 2 in Classroom 
 
-insert into Participants (FK_class_id,FK_user_id) values(2,1);
+insert into Participants (FK_class_id,FK_user_id) values(2,4);
 
 -- Update classroom admin
 
