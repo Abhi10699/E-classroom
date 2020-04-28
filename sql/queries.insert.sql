@@ -9,3 +9,8 @@ insert into Participants (FK_class_id,FK_user_id) values(2,4);
 -- Update classroom admin
 
 update Classroom set FK_admin_id = ? where classroom_id = ?
+
+
+-- Insert comment
+
+insert into Comments (FK_class_id,FK_user_id,comment) values (?,?,?);
