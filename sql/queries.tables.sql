@@ -27,3 +27,15 @@ create table Participants(
   foreign key (FK_class_id) references Classroom(classroom_id),
   foreign key (FK_user_id) references Users(id)
 );
+
+
+-- Comments table
+
+create table Comments(
+  FK_class_id int,
+  FK_user_id int,
+  comment text,
+  commentId int primary key auto_increment,
+  foreign key (FK_class_id) references Classroom(classroom_id),
+  foreign key (FK_user_id) references Users(id)
+);
