@@ -49,7 +49,7 @@ class Classroom{
   // fetch classroom from database
   public function fetchClassroom(){
 
-    $statement = "select * from Classroom where classroom_id = ?";
+    $statement = "select classroom_name,description from Classroom where classroom_id = ?";
     $params = array(
       "dTypes" => "i",
       "params" => array($this->classroomId)
@@ -64,7 +64,8 @@ class Classroom{
       }
       else{
         return array(
-          "isClassroom"=>true
+          "isClassroom"=>true,
+          "data"=>$response["data"]
         );
       }
     });
@@ -132,5 +133,38 @@ class Classroom{
     );
 
     return Database::PrepareUpdateCall($this->conn,$statement,$params);
+  }
+
+  public function fetchParticipants(){
+    $statement = "select Users.username from Classroom inner join Participants on Participants.FK_class_id=Classroom.classroom_id inner join Users on Users.id = Participants.FK_user_id where Classroom.classroom_id = ?";
+    $params = array(
+      "dTypes" => "i",
+      "params" => array($this->classroomId)
+    );
+
+    return Database::PrepareFetchCall($this->conn,$statement,$params,function($response){
+      $returnResponse = null;
+
+      if($response["error"]){
+        $returnResponse = array(
+          "error" => true
+        );
+      }
+      else{
+        $participants = array();
+
+        while($row = $response["data"]->fetch_assoc()){
+          array_push($participants,$row);
+        }
+
+          $returnResponse = array(
+          "error" => false,
+          "participants" => $participants
+        );
+      }
+
+      return $returnResponse;
+    });
+ 
   }
 }
