@@ -2,7 +2,16 @@
 
 <body>
   <nav class="navbar navbar-expand navbar-light bg-light">
-    <a class="navbar-brand" href="#">Google Classroom</a>
+    <a class="navbar-brand" href="
+      <?php
+      if ($_SESSION["authenticated"] == "1") {
+        echo "/pages/dashboard";
+      }  
+      else{
+        echo "/";
+      }
+      ?>
+    ">Google Classroom</a>
     <?php
     if ($_SESSION["authenticated"] == "1") {
     ?>
