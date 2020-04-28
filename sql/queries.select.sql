@@ -23,3 +23,11 @@ select Classroom.classroom_id,Classroom.classroom_name,Classroom.description fro
 
 -- Select a student of id ? from a classroom ?
 select * from Participants where FK_user_id = 1 and FK_class_id = 1
+
+
+-- Select all the posts from a particular classroom
+select Comments.comment,Users.username from Comments inner join Classroom on Classroom.classroom_id=Comments.FK_class_id inner join Users on Users.id=Comments.FK_user_id where FK_class_id = ?;
+
+
+-- Selet all the participants of a classroom
+select Users.username from Classroom inner join Participants on Participants.FK_class_id=Classroom.classroom_id inner join Users on Users.id = Participants.FK_user_id where Classroom.classroom_id = 2;
