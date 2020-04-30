@@ -1,0 +1,9 @@
+.jumbotron{
+  background-image: url("https://static.vecteezy.com/packs/media/components/home/masthead-vectors/img/lavakidneys_800x400@2x-2db5e5a0c944e2b16a11a18674570f76.jpg");
+  background-color: rgba(0,0,0,0.05);
+  background-blend-mode: multiply;
+  color: white;
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+}

@@ -1,0 +1,19 @@
+server {
+  root /www/data/;
+ 
+  location ~ \.(txt|docx|pdf) {
+    root /www/data/static/documents/;
+    autoindex on;
+    gzip_static on;
+    expires max;
+  }
+
+
+  location ~ \.(png|jpg|jpeg) {
+    root /www/data/static/images/;
+    autoindex on;
+    gzip_static on;
+    expires max;
+  }
+
+}

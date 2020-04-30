@@ -23,5 +23,5 @@
 </div>
 
 <!-- Load javascripts -->
-<script src="./public/js/signin.script.js"></script>
+<script src="./public/js/auth.signin.js"></script>
 <?php require "../_includes/footer.php" ?>

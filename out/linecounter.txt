@@ -1,0 +1,49 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2020-04-25 14:16:46
+count workspace : /home/abhi/workspace/college-projects/classroom-php
+total files : 28
+total code lines : 914
+total comment lines : 86
+total blank lines : 285
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |               |              2|              0|              0|   0.22|
+   |           .php|            779|             69|            239|     85|
+   |           .yml|             17|              0|              1|    1.9|
+   |           .sql|             30|             13|             22|    3.3|
+   |            .js|             86|              4|             23|    9.4|
+   -------------------------------------------------------------------------
+classes/database.php, code is 52, comment is 11, blank is 21.
+classes/sessionManager.php, code is 9, comment is 1, blank is 2.
+docker-compose.yml, code is 17, comment is 0, blank is 1.
+Dockerfile, code is 2, comment is 0, blank is 0.
+index.php, code is 12, comment is 0, blank is 0.
+models/Classroom.php, code is 92, comment is 13, blank is 32.
+models/entities/Student.php, code is 23, comment is 3, blank is 4.
+models/entities/Teacher.php, code is 8, comment is 1, blank is 5.
+models/entities/User.php, code is 137, comment is 9, blank is 49.
+pages/_includes/body.php, code is 91, comment is 0, blank is 14.
+pages/_includes/controllers/controller.navbar.php, code is 58, comment is 6, blank is 20.
+pages/_includes/footer.php, code is 12, comment is 0, blank is 2.
+pages/_includes/header.php, code is 11, comment is 0, blank is 2.
+pages/_includes/public/js/navbar.index.js, code is 32, comment is 3, blank is 11.
+pages/auth/controllers/controller.signin.php, code is 57, comment is 4, blank is 16.
+pages/auth/controllers/controller.signup.php, code is 75, comment is 15, blank is 25.
+pages/auth/public/js/auth.register.js, code is 22, comment is 1, blank is 5.
+pages/auth/public/js/auth.signin.js, code is 20, comment is 0, blank is 5.
+pages/auth/signin.php, code is 24, comment is 0, blank is 3.
+pages/auth/signup.php, code is 61, comment is 0, blank is 21.
+pages/dashboard/controllers/controller.index.php, code is 12, comment is 4, blank is 11.
+pages/dashboard/controllers/controller.navbar.php, code is 13, comment is 2, blank is 4.
+pages/dashboard/index.php, code is 29, comment is 0, blank is 8.
+pages/dashboard/pages/classroom.php, code is 3, comment is 0, blank is 0.
+pages/dashboard/public/js/dashboard.index.js, code is 12, comment is 0, blank is 2.
+sql/queries.insert.sql, code is 3, comment is 3, blank is 5.
+sql/queries.select.sql, code is 7, comment is 7, blank is 11.
+sql/queries.tables.sql, code is 20, comment is 3, blank is 6.
+===============================================================================

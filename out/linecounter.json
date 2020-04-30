@@ -1,0 +1,212 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "/home/abhi/workspace/college-projects/classroom-php",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2020-04-25 14:16:46",
+            "filesum": 28,
+            "codesum": 914,
+            "commentsum": 86,
+            "blanksum": 285,
+            "statistics": {
+                "": {
+                    "code": 2,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".php": {
+                    "code": 779,
+                    "comment": 69,
+                    "blank": 239
+                },
+                ".yml": {
+                    "code": 17,
+                    "comment": 0,
+                    "blank": 1
+                },
+                ".sql": {
+                    "code": 30,
+                    "comment": 13,
+                    "blank": 22
+                },
+                ".js": {
+                    "code": 86,
+                    "comment": 4,
+                    "blank": 23
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 21,
+                    "code": 52,
+                    "comment": 11,
+                    "filename": "classes/database.php"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 1,
+                    "filename": "classes/sessionManager.php"
+                },
+                {
+                    "blank": 1,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "docker-compose.yml"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "index.php"
+                },
+                {
+                    "blank": 32,
+                    "code": 92,
+                    "comment": 13,
+                    "filename": "models/Classroom.php"
+                },
+                {
+                    "blank": 4,
+                    "code": 23,
+                    "comment": 3,
+                    "filename": "models/entities/Student.php"
+                },
+                {
+                    "blank": 5,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "models/entities/Teacher.php"
+                },
+                {
+                    "blank": 49,
+                    "code": 137,
+                    "comment": 9,
+                    "filename": "models/entities/User.php"
+                },
+                {
+                    "blank": 14,
+                    "code": 91,
+                    "comment": 0,
+                    "filename": "pages/_includes/body.php"
+                },
+                {
+                    "blank": 20,
+                    "code": 58,
+                    "comment": 6,
+                    "filename": "pages/_includes/controllers/controller.navbar.php"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "pages/_includes/footer.php"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "pages/_includes/header.php"
+                },
+                {
+                    "blank": 11,
+                    "code": 32,
+                    "comment": 3,
+                    "filename": "pages/_includes/public/js/navbar.index.js"
+                },
+                {
+                    "blank": 16,
+                    "code": 57,
+                    "comment": 4,
+                    "filename": "pages/auth/controllers/controller.signin.php"
+                },
+                {
+                    "blank": 25,
+                    "code": 75,
+                    "comment": 15,
+                    "filename": "pages/auth/controllers/controller.signup.php"
+                },
+                {
+                    "blank": 5,
+                    "code": 22,
+                    "comment": 1,
+                    "filename": "pages/auth/public/js/auth.register.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "pages/auth/public/js/auth.signin.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "pages/auth/signin.php"
+                },
+                {
+                    "blank": 21,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "pages/auth/signup.php"
+                },
+                {
+                    "blank": 11,
+                    "code": 12,
+                    "comment": 4,
+                    "filename": "pages/dashboard/controllers/controller.index.php"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 2,
+                    "filename": "pages/dashboard/controllers/controller.navbar.php"
+                },
+                {
+                    "blank": 8,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "pages/dashboard/index.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "pages/dashboard/pages/classroom.php"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "pages/dashboard/public/js/dashboard.index.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 3,
+                    "comment": 3,
+                    "filename": "sql/queries.insert.sql"
+                },
+                {
+                    "blank": 11,
+                    "code": 7,
+                    "comment": 7,
+                    "filename": "sql/queries.select.sql"
+                },
+                {
+                    "blank": 6,
+                    "code": 20,
+                    "comment": 3,
+                    "filename": "sql/queries.tables.sql"
+                }
+            ]
+        }
+    ]
+}
